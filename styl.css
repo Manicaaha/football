@@ -3,17 +3,19 @@
     text-align: center;
     height: 370px;
 }
-.mecze{
+.wyn{
     color: white;
     text-align: center;
     width: 200px;
     margin: 10px;
     border: 1px solid black;
     border-radius: 10px;
+    float: left;
 }
 .wyn:hover{
     border: 1px solid white;
 }
+
 .glowny{
     background-color: whitesmoke;
     height: 50px;

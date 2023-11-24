@@ -17,7 +17,11 @@
         $pyt = "SELECT `zespol1`,`zespol2`,`wynik`,`data_rozgrywki` FROM `rozgrywka` WHERE `zespol1` = 'EVG';";
         $wyn = mysqli_query($lacz, $pyt);
         while ($r = mysqli_fetch_array($wyn)) {
-            echo "<div class='wyn'><h3>".$r[0]."-".$r[1]."</div>";
+            echo '<div class="wyn">';
+            echo "<h3>".$r[0]."-".$r[1]."</h3>";
+            echo "<h4>".$r[2]."</h4>";
+            echo "<p>W dniu: ".$r[3]."</p>";
+            echo "</div>";
         }
         mysqli_close($lacz);
         ?>
@@ -33,6 +37,17 @@
         </form>
         <ul>
             <?php
+            $lacz = mysqli_connect('localhost','root','','egzamin');
+            if(!empty ($_POST['text'])){
+                $wy = $_POST['text'];
+                $pyt = "SELECT zawodnik.`imie`,zawodnik.`nazwisko`,pozycja.nazwa FROM `zawodnik` JOIN pozycja ON zawodnik.pozycja_id = pozycja.id WHERE zawodnik.`pozycja_id` = '$wy';";
+                $wyn = mysqli_query($lacz, $pyt);
+                while($row = mysqli_fetch_array($wyn))
+                {
+                echo "<p><li>".$row[0]." ".$row[1]."</li></p>";
+                }
+            }
+            mysqli_close($lacz);
             ?>
         </ul>
     </div>
